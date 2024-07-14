@@ -11,6 +11,18 @@ function testUrl(options) {
 describe('GetFilenameFromUrl', () => {
   const tests = [
     {
+      url: '/path\0/with/nul\0l.js',
+      outputPath: '/',
+      publicPath: '/',
+      expected: false,
+    },
+    {
+      url: '/path%2f..%2f..%2f..%2f..%2f..%2ffile.js',
+      outputPath: '/',
+      publicPath: '/',
+      expected: false,
+    },
+    {
       url: '/foo.js',
       outputPath: '/',
       publicPath: '/',
